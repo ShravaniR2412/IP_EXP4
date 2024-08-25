@@ -4,38 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom T-Shirt Order Form</title>
+   
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+   
+    <style>
+        .navbar-custom {
+            background-color: #6f4f4f; 
+        }
+        .hero {
+            background-color:  #ceb9b9;
+            color: #333; 
+            padding: 60px 0;
+            text-align: center;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        .form-custom {
+            background-color: #f1f1f1; 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .delivery-details {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+        .receipt {
+            display: none; /* Initially hidden */
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #e9ecef;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .receipt h3 {
+            color: #6f4f4f;
+            margin-bottom: 20px;
+        }
+        .receipt p {
+            margin-bottom: 10px;
+        }
+        .receipt strong {
+            display: inline-block;
+            width: 200px;
+        }
+    </style>
 </head>
-<body align="center">
+<body>
 
-    <!-- Header Section -->
-    <header>
-        <img src="image.png" alt="Company Logo" width="100">
-        <font color="maroon">
-        <h1>Rubix-Tshirst Tees Co.</h1>
-    </font>
-        <font color="blue">
-            <i><p>"Express Yourself with Every Shirt!"</p></i>
-        </font>
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <a class="navbar-brand" href="#">Rubix-Tshirts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+       
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Design Your Perfect T-Shirt with Us!</h1>
+            <p class="lead">Custom T-Shirt Order Form</p>
+        </div>
+    </div>
 
     <!-- Main Content Section -->
-    <div align="center">
-        <h2>Place Your Order</h2>
-        <form action="/submit-order" method="post">
-            <!-- Tagline and Color Section in One Row -->
-            <table>
-                <tr>
-                    <td>
-                        <fieldset>
-                            <legend>Tagline on the Shirt</legend>
+    <div class="container mt-5">
+        <form id="order-form" class="form-custom">
+            <div class="row">
+                <!-- Tagline Section -->
+                <div class="col-md-6 form-section">
+                    <fieldset class="form-group">
+                        <legend>Tagline</legend>
+                        <div class="form-group">
                             <label for="tagline">Enter your tagline:</label>
-                            <input type="text" id="tagline" name="tagline" placeholder="Enter tagline here" required>
-
-                          
-
-                            <legend>Select T-Shirt Color</legend>
+                            <input type="text" id="tagline" name="tagline" class="form-control" placeholder="Enter tagline here" required>
+                            <small id="taglineHelp" class="form-text text-muted">Maximum 100 characters.</small>
+                        </div>
+                    </fieldset>
+                </div>
+                <!-- Color and Size Section -->
+                <div class="col-md-6 form-section">
+                    <fieldset class="form-group">
+                        <legend>Color and Size</legend>
+                        <div class="form-group">
                             <label for="color">Choose a color:</label>
-                            <select id="color" name="color" required>
+                            <select id="color" name="color" class="form-control" required>
                                 <option value="">Select color</option>
                                 <option value="red">Red</option>
                                 <option value="blue">Blue</option>
@@ -43,69 +103,147 @@
                                 <option value="black">Black</option>
                                 <option value="white">White</option>
                             </select>
-
-                            <legend>Select T-Shirt Size</legend>
+                        </div>
+                        <div class="form-group">
                             <label for="size">Choose a size:</label>
-                            <select id="size" name="size" required>
+                            <select id="size" name="size" class="form-control" required>
                                 <option value="">Select size</option>
                                 <option value="small">Small</option>
                                 <option value="medium">Medium</option>
                                 <option value="large">Large</option>
                                 <option value="xlarge">X-Large</option>
                             </select>
-                        </fieldset>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
 
-
-                    </td>
-                    <td>
-                        <fieldset>
-
-                            <legend>Specify Quantity</legend>
+            <!-- Quantity and Delivery Date Section -->
+            <div class="row">
+                <div class="col-md-6 form-section">
+                    <fieldset class="form-group">
+                        <legend>Quantity and Delivery Date</legend>
+                        <div class="form-group">
                             <label for="quantity">Enter quantity:</label>
-                            <input type="number" id="quantity" name="quantity" min="1" max="100" required>
-
-                            <legend>Select Delivery Date</legend>
+                            <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="100" required>
+                        </div>
+                        <div class="form-group">
                             <label for="delivery-date">Choose delivery date:</label>
-                            <input type="date" id="delivery-date" name="delivery-date" required>
-                            
-                        </fieldset>
-                    </td>
-                </tr>
-            </table>
-
-
-         
+                            <input type="date" id="delivery-date" name="delivery-date" class="form-control" required>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
 
             <!-- Delivery Details Section -->
-            <fieldset>
-                <legend>Delivery Details</legend>
-                <label for="recipient-name">Recipient's Name:</label>
-                <input type="text" id="recipient-name" name="recipient-name" placeholder="Recipient's name" required><br>
-
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" placeholder="Delivery address" required><br>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Your email address" required><br>
-
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" placeholder="Your phone number" pattern="[0-9]{10}" required><br>
-            </fieldset>
+            <div class="delivery-details">
+                <fieldset class="form-group">
+                    <legend>Delivery Details</legend>
+                    <div class="form-group">
+                        <label for="recipient-name">Recipient's Name:</label>
+                        <input type="text" id="recipient-name" name="recipient-name" class="form-control" placeholder="Recipient's name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" class="form-control" placeholder="Delivery address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="Your phone number" pattern="[0-9]{10}" required>
+                    </div>
+                </fieldset>
+            </div>
 
             <!-- Additional Comments Section -->
-            <fieldset>
+            <fieldset class="form-group mb-4">
                 <legend>Additional Comments</legend>
-                <label for="comments">Any special instructions:</label>
-                <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Enter any additional comments here"></textarea>
+                <div class="form-group">
+                    <label for="comments">Any special instructions:</label>
+                    <textarea id="comments" name="comments" class="form-control" rows="4" placeholder="Enter any additional comments here"></textarea>
+                </div>
             </fieldset>
 
             <!-- Submit and Reset Buttons -->
-            <div>
-                <button type="submit">Submit Order</button>
-                <button type="reset">Reset Form</button>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Submit Order</button>
+                <button type="reset" class="btn btn-secondary">Reset Form</button>
             </div>
         </form>
+
+        <!-- Receipt Section -->
+        <div id="receipt" class="receipt">
+            <h3>Order Receipt</h3>
+            <p id="receipt-date" class="mb-4"></p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Tagline:</strong> <span id="receipt-tagline"></span></p>
+                    <p><strong>Color:</strong> <span id="receipt-color"></span></p>
+                    <p><strong>Size:</strong> <span id="receipt-size"></span></p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Quantity:</strong> <span id="receipt-quantity"></span></p>
+                    <p><strong>Delivery Date:</strong> <span id="receipt-delivery-date"></span></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Recipient's Name:</strong> <span id="receipt-recipient-name"></span></p>
+                    <p><strong>Address:</strong> <span id="receipt-address"></span></p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Email:</strong> <span id="receipt-email"></span></p>
+                    <p><strong>Phone Number:</strong> <span id="receipt-phone"></span></p>
+                </div>
+            </div>
+            <p><strong>Comments:</strong> <span id="receipt-comments"></span></p>
+        </div>
     </div>
 
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+   
+    <script>
+        document.getElementById('order-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Form validation
+            const tagline = document.getElementById('tagline').value;
+            const phone = document.getElementById('phone').value;
+            const taglineMaxLength = 100;
+
+            if (tagline.length > taglineMaxLength) {
+                alert(`Tagline must be less than ${taglineMaxLength} characters.`);
+                return;
+            }
+            
+            if (!/^\d{10}$/.test(phone)) {
+                alert('Phone number must be exactly 10 digits.');
+                return;
+            }
+
+            // Generate receipt
+            const now = new Date();
+            document.getElementById('receipt-date').innerText = `Date: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+            document.getElementById('receipt-tagline').innerText = tagline;
+            document.getElementById('receipt-color').innerText = document.getElementById('color').value;
+            document.getElementById('receipt-size').innerText = document.getElementById('size').value;
+            document.getElementById('receipt-quantity').innerText = document.getElementById('quantity').value;
+            document.getElementById('receipt-delivery-date').innerText = document.getElementById('delivery-date').value;
+            document.getElementById('receipt-recipient-name').innerText = document.getElementById('recipient-name').value;
+            document.getElementById('receipt-address').innerText = document.getElementById('address').value;
+            document.getElementById('receipt-email').innerText = document.getElementById('email').value;
+            document.getElementById('receipt-phone').innerText = phone;
+            document.getElementById('receipt-comments').innerText = document.getElementById('comments').value;
+
+            document.getElementById('receipt').style.display = 'block'; // Show receipt
+        });
+    </script>
 </body>
 </html>
